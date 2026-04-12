@@ -96,9 +96,9 @@ export default function About() {
           <div className="space-y-6 reveal-left">
             <div className="flex items-start gap-4">
               <div className="relative flex-shrink-0">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#0f3559] to-[#0f3559] p-0.5">
-                  <div className="w-full h-full rounded-2xl bg-bg-base flex items-center justify-center text-3xl">
-                    <User className="text-[#0f3559] w-10 h-10" />
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#0f3559] to-[#0f3559] p-[2px] group">
+                  <div className="w-full h-full rounded-2xl overflow-hidden bg-bg-base flex items-center justify-center">
+                    <img src="badge1.jpeg" alt="Logo" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   </div>
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#0f3559] border-2 border-bg-base animate-pulse"></div>

@@ -80,6 +80,17 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const textPrefix = language === 'ar' ? 'مرحباً أحمد! طلب تواصل جديد من موقعك:' : 'Hi Ahmed! New contact request from your portfolio:';
+    const messageText = `${textPrefix}
+- ${language === 'ar' ? 'الاسم' : 'Name'}: ${formData.name}
+- ${language === 'ar' ? 'البريد' : 'Email'}: ${formData.email}
+- ${language === 'ar' ? 'الميزانية' : 'Budget'}: ${formData.budget}
+- ${language === 'ar' ? 'التفاصيل' : 'Details'}: ${formData.message}`;
+    
+    const whatsappUrl = `https://wa.me/201559969297?text=${encodeURIComponent(messageText)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 4000);
     setFormData({ name: '', email: '', budget: '', message: '' });
