@@ -35,10 +35,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#030608] border-t border-[#00f5ff]/10 overflow-hidden">
+    <footer className="relative bg-bg-base border-t border-border-subtle overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-20"></div>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-b from-[#00f5ff]/5 to-transparent blur-3xl"></div>
+      <div className="absolute inset-0 bg-grid opacity-20 filter invert dark:invert-0 duration-300"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-b from-[#0f3559]/10 to-transparent blur-3xl"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
@@ -53,7 +53,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-text-base font-bold text-xl font-['Space_Grotesk']">
-                  Ahmed<span className="text-[#00f5ff]">.</span>Hassan
+                  Ahmed<span className="text-[#0f3559]">.</span>Hassan
                 </div>
                 <div className="text-text-muted text-sm">Media Buyer & Digital Marketing Specialist</div>
               </div>
@@ -67,11 +67,11 @@ export default function Footer() {
 
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-text-muted text-sm">
-                <span className="text-[#00f5ff]">📍</span> {language === 'ar' ? 'الإسماعيلية، مصر — متاح للعمل السحابي عالمياً' : 'Ismailia, Egypt — Available Worldwide'}
+                <span className="text-[#0f3559]">📍</span> {language === 'ar' ? 'الإسماعيلية، مصر — متاح للعمل السحابي عالمياً' : 'Ismailia, Egypt — Available Worldwide'}
               </div>
               <div className="flex items-center gap-2 text-text-muted text-sm">
-                <span className="text-[#00f5ff]">📱</span>
-                <a href="https://wa.me/201559969297" target="_blank" rel="noopener noreferrer" className="hover:text-[#00f5ff] transition-colors">
+                <span className="text-[#0f3559]">📱</span>
+                <a href="https://wa.me/201559969297" target="_blank" rel="noopener noreferrer" className="hover:text-[#0f3559] transition-colors">
                   +20 155 996 9297
                 </a>
               </div>
@@ -120,18 +120,18 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-text-base font-bold font-['Space_Grotesk'] text-base relative">
+            <h4 className="text-text-base font-bold font-['Space_Grotesk'] text-base relative inline-block">
               {language === 'ar' ? 'روابط سريعة' : 'Quick Links'}
-              <span className={`absolute -bottom-1 ${language === 'ar' ? 'right-0' : 'left-0'} w-8 h-0.5 bg-[#00f5ff] rounded-full`}></span>
+              <span className={`absolute -bottom-1 ${language === 'ar' ? 'right-0' : 'left-0'} w-8 h-0.5 bg-[#0f3559] rounded-full`}></span>
             </h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.key}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-text-muted hover:text-[#00f5ff] text-sm transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-text-muted hover:text-[#0f3559] text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00f5ff]/40 group-hover:bg-[#00f5ff] transition-colors flex-shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0f3559]/40 group-hover:bg-[#0f3559] transition-colors flex-shrink-0"></span>
                     {t(link.key)}
                   </button>
                 </li>
@@ -141,18 +141,18 @@ export default function Footer() {
 
           {/* Services */}
           <div className="space-y-4">
-            <h4 className="text-text-base font-bold font-['Space_Grotesk'] text-base relative">
+            <h4 className="text-text-base font-bold font-['Space_Grotesk'] text-base relative inline-block">
               {language === 'ar' ? 'الخدمات' : 'Services'}
-              <span className={`absolute -bottom-1 ${language === 'ar' ? 'right-0' : 'left-0'} w-8 h-0.5 bg-[#bf00ff] rounded-full`}></span>
+              <span className={`absolute -bottom-1 ${language === 'ar' ? 'right-0' : 'left-0'} w-8 h-0.5 bg-[#0f3559] rounded-full`}></span>
             </h4>
             <ul className="space-y-2.5">
               {(language === 'ar' ? servicesAr : servicesEn).map((service) => (
                 <li key={service}>
                   <button
                     onClick={() => scrollTo('#services')}
-                    className="text-text-muted hover:text-[#bf00ff] text-sm transition-colors duration-200 flex items-center gap-2 group text-left"
+                    className="text-text-muted hover:text-[#0f3559] text-sm transition-colors duration-200 flex items-center gap-2 group text-left"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#bf00ff]/40 group-hover:bg-[#bf00ff] transition-colors flex-shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0f3559]/40 group-hover:bg-[#0f3559] transition-colors flex-shrink-0"></span>
                     {service}
                   </button>
                 </li>
@@ -161,7 +161,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-border-subtle py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-sm text-center sm:text-left">
             © {currentYear} Ahmed Hassan. {language === 'ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
           </p>
@@ -174,7 +174,7 @@ export default function Footer() {
               href="https://wa.me/201559969297"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-muted hover:text-[#00f5ff] text-xs transition-colors flex items-center"
+              className="text-text-muted hover:text-[#0f3559] text-xs transition-colors flex items-center"
             >
               {language === 'ar' ? 'تواصل للبدء ← ' : 'Contact Me →'}
             </a>
