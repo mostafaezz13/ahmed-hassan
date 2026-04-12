@@ -43,7 +43,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050810] text-slate-200 overflow-x-hidden">
+    <div className="min-h-screen bg-bg-base text-text-base overflow-x-hidden">
       {/* Secret toggle for Dashboard (Clickable 'Ahmed Hassan' in footer or similar) */}
       <button 
         onClick={() => setShowDashboard(!showDashboard)}

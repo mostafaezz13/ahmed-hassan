@@ -7,7 +7,7 @@ export default function CaseStudy() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden bg-[#080d18]">
+    <section className="relative py-24 overflow-hidden bg-bg-base">
       {/* Background */}
       <div className="absolute inset-0 bg-grid opacity-30"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[#00f5ff]/5 via-[#bf00ff]/5 to-[#00f5ff]/5 blur-3xl rounded-full"></div>
@@ -20,10 +20,10 @@ export default function CaseStudy() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/5 text-sm text-[#00f5ff] font-mono mb-4">
             🔬 Featured Case Study
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-['Space_Grotesk'] mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-text-base font-['Space_Grotesk'] mb-4">
             From $9K to <span className="gradient-text">$136K/Month</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-text-muted text-lg max-w-2xl mx-auto">
             How I scaled a fashion e-commerce brand to 7.4x ROAS in just 4 months
             with a systematic creative testing and funnel strategy.
           </p>
@@ -36,7 +36,7 @@ export default function CaseStudy() {
               <span className="w-2 h-2 rounded-full bg-red-500"></span>
               The Problem
             </div>
-            <ul className="space-y-3 text-slate-400 text-sm">
+            <ul className="space-y-3 text-text-muted text-sm">
               {[
                 'Burning $5,000/month with only 1.8x ROAS',
                 'No consistent creative testing process',
@@ -58,7 +58,7 @@ export default function CaseStudy() {
               <span className="w-2 h-2 rounded-full bg-[#00f5ff]"></span>
               My Strategy
             </div>
-            <ul className="space-y-3 text-slate-400 text-sm">
+            <ul className="space-y-3 text-text-muted text-sm">
               {[
                 'Complete account audit and pixel verification',
                 'Rebuilt campaign structure (TOF / MOF / BOF)',
@@ -88,10 +88,10 @@ export default function CaseStudy() {
                 { label: 'CTR', value: '3.8%', prev: 'was 0.9%' },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center justify-between">
-                  <span className="text-slate-400 text-sm">{stat.label}</span>
+                  <span className="text-text-muted text-sm">{stat.label}</span>
                   <div className="text-right">
                     <div className="text-[#39ff14] font-bold text-base">{stat.value}</div>
-                    <div className="text-slate-600 text-xs">{stat.prev}</div>
+                    <div className="text-text-muted text-xs">{stat.prev}</div>
                   </div>
                 </div>
               ))}
@@ -101,7 +101,7 @@ export default function CaseStudy() {
 
         {/* Timeline */}
         <div className="reveal mb-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-white font-['Space_Grotesk'] text-center mb-10">
+          <h3 className="text-xl sm:text-2xl font-bold text-text-base font-['Space_Grotesk'] text-center mb-10">
             Month-by-Month <span className="neon-text-cyan">Growth Timeline</span>
           </h3>
           <div className="relative">
@@ -122,10 +122,10 @@ export default function CaseStudy() {
                     <div className="absolute inset-0 rounded-full animate-ping opacity-20" style={{ backgroundColor: m.color }}></div>
                   </div>
 
-                  <div className="font-bold text-white font-['Space_Grotesk'] mb-1">{m.month}</div>
+                  <div className="font-bold text-text-base font-['Space_Grotesk'] mb-1">{m.month}</div>
                   <div className="text-2xl font-black mb-0.5" style={{ color: m.color }}>{m.revenue}</div>
-                  <div className="text-xs text-slate-500 mb-3">{m.roas} ROAS</div>
-                  <p className="text-slate-400 text-xs leading-relaxed">{m.action}</p>
+                  <div className="text-xs text-text-muted mb-3">{m.roas} ROAS</div>
+                  <p className="text-text-muted text-xs leading-relaxed">{m.action}</p>
                 </div>
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function CaseStudy() {
             <div className="absolute top-4 left-8 text-6xl text-[#00f5ff]/20 font-serif leading-none">"</div>
             <div className="absolute bottom-0 right-8 text-6xl text-[#bf00ff]/20 font-serif leading-none rotate-180">"</div>
             <div className="relative z-10">
-              <p className="text-xl sm:text-2xl text-white font-medium leading-relaxed mb-6 max-w-3xl mx-auto">
+              <p className="text-xl sm:text-2xl text-text-base font-medium leading-relaxed mb-6 max-w-3xl mx-auto">
                 Within 4 months, Ahmed completely transformed our paid advertising. We went from losing money on ads to
                 generating our best revenue month ever. The process was transparent, data-driven, and the results speak for themselves.
               </p>
@@ -147,8 +147,8 @@ export default function CaseStudy() {
                   👤
                 </div>
                 <div className="text-left">
-                  <div className="text-white font-semibold">Sarah K.</div>
-                  <div className="text-slate-400 text-sm">Founder, Luxe Fashion Co.</div>
+                  <div className="text-text-base font-semibold">Sarah K.</div>
+                  <div className="text-text-muted text-sm">Founder, Luxe Fashion Co.</div>
                 </div>
               </div>
             </div>

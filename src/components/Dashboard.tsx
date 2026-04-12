@@ -73,11 +73,11 @@ export default function Dashboard() {
 
     setIsSaving(true);
     setMessage('');
-    
+
     try {
       // Process tags string to array
       const tagsArray = newProject.tags.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
-      
+
       const projectToSave = {
         ...newProject,
         tags: tagsArray,
@@ -85,7 +85,7 @@ export default function Dashboard() {
       };
 
       await addDoc(collection(db, "projects"), projectToSave);
-      
+
       setNewProject({
         title: '',
         category: 'E-Commerce',
@@ -109,7 +109,7 @@ export default function Dashboard() {
           { icon: '📈', value: '', label: 'Revenue' }
         ]
       });
-      
+
       setMessage('Project uploaded to Firebase!');
       fetchProjects();
     } catch (error) {
@@ -122,7 +122,7 @@ export default function Dashboard() {
 
   const handleDelete = async (id: string) => {
     if (!window.confirm('Are you sure you want to delete this project?')) return;
-    
+
     try {
       await deleteDoc(doc(db, "projects", id));
       fetchProjects();
@@ -132,7 +132,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-bg-base text-text-base">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-center mb-8 text-primary">
           Project Dashboard
@@ -143,15 +143,15 @@ export default function Dashboard() {
           <div className="lg:col-span-1">
             <div className="glass p-6 rounded-lg sticky top-8">
               <h2 className="text-2xl font-bold mb-6 text-primary">Add New Project</h2>
-              
+
               <div className="space-y-4 max-h-[80vh] overflow-y-auto pr-2 custom-scrollbar">
                 <div>
                   <label className="block mb-1 text-sm text-primary">Project Title</label>
                   <input
                     type="text"
                     value={newProject.title}
-                    onChange={(e) => setNewProject({...newProject, title: e.target.value})}
-                    className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                    onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
+                    className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     placeholder="e.g. Fashion Brand Scale Up"
                   />
                 </div>
@@ -163,8 +163,8 @@ export default function Dashboard() {
                       id="project-category"
                       title="Project Category"
                       value={newProject.category}
-                      onChange={(e) => setNewProject({...newProject, category: e.target.value})}
-                      className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                      onChange={(e) => setNewProject({ ...newProject, category: e.target.value })}
+                      className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     >
                       <option value="E-Commerce">E-Commerce</option>
                       <option value="Lead Generation">Lead Generation</option>
@@ -177,8 +177,8 @@ export default function Dashboard() {
                     <input
                       type="text"
                       value={newProject.industry}
-                      onChange={(e) => setNewProject({...newProject, industry: e.target.value})}
-                      className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                      onChange={(e) => setNewProject({ ...newProject, industry: e.target.value })}
+                      className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                       placeholder="e.g. Fashion"
                     />
                   </div>
@@ -190,8 +190,8 @@ export default function Dashboard() {
                     <input
                       type="text"
                       value={newProject.platform}
-                      onChange={(e) => setNewProject({...newProject, platform: e.target.value})}
-                      className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                      onChange={(e) => setNewProject({ ...newProject, platform: e.target.value })}
+                      className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     />
                   </div>
                   <div>
@@ -199,8 +199,8 @@ export default function Dashboard() {
                     <input
                       type="text"
                       value={newProject.platformIcon}
-                      onChange={(e) => setNewProject({...newProject, platformIcon: e.target.value})}
-                      className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                      onChange={(e) => setNewProject({ ...newProject, platformIcon: e.target.value })}
+                      className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                       placeholder="e.g. 📘"
                     />
                   </div>
@@ -212,8 +212,8 @@ export default function Dashboard() {
                     <input
                       type="text"
                       value={newProject.budget}
-                      onChange={(e) => setNewProject({...newProject, budget: e.target.value})}
-                      className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                      onChange={(e) => setNewProject({ ...newProject, budget: e.target.value })}
+                      className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                       placeholder="$0,000 / month"
                     />
                   </div>
@@ -222,8 +222,8 @@ export default function Dashboard() {
                     <input
                       type="text"
                       value={newProject.duration}
-                      onChange={(e) => setNewProject({...newProject, duration: e.target.value})}
-                      className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                      onChange={(e) => setNewProject({ ...newProject, duration: e.target.value })}
+                      className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                       placeholder="e.g. 4 Months"
                     />
                   </div>
@@ -235,8 +235,8 @@ export default function Dashboard() {
                     id="project-description"
                     title="Brief Description"
                     value={newProject.description}
-                    onChange={(e) => setNewProject({...newProject, description: e.target.value})}
-                    className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                    onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
+                    className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     rows={2}
                   />
                 </div>
@@ -247,8 +247,8 @@ export default function Dashboard() {
                     id="project-challenge"
                     title="The Challenge"
                     value={newProject.challenge}
-                    onChange={(e) => setNewProject({...newProject, challenge: e.target.value})}
-                    className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                    onChange={(e) => setNewProject({ ...newProject, challenge: e.target.value })}
+                    className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     rows={2}
                   />
                 </div>
@@ -259,8 +259,8 @@ export default function Dashboard() {
                     id="project-solution"
                     title="The Solution"
                     value={newProject.solution}
-                    onChange={(e) => setNewProject({...newProject, solution: e.target.value})}
-                    className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                    onChange={(e) => setNewProject({ ...newProject, solution: e.target.value })}
+                    className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     rows={2}
                   />
                 </div>
@@ -269,15 +269,15 @@ export default function Dashboard() {
                   <label className="block mb-1 text-sm text-primary">Main Results (Highlights)</label>
                   {newProject.highlights.map((h, i) => (
                     <div key={i} className="grid grid-cols-3 gap-2 mt-2">
-                       <input
+                      <input
                         type="text"
                         value={h.icon}
                         onChange={(e) => {
                           const newH = [...newProject.highlights];
                           newH[i].icon = e.target.value;
-                          setNewProject({...newProject, highlights: newH});
+                          setNewProject({ ...newProject, highlights: newH });
                         }}
-                        className="bg-black border border-primary/30 text-white px-2 py-1 rounded text-sm"
+                        className="bg-bg-base border border-primary/30 text-text-base px-2 py-1 rounded text-sm"
                         placeholder="Icon"
                       />
                       <input
@@ -286,9 +286,9 @@ export default function Dashboard() {
                         onChange={(e) => {
                           const newH = [...newProject.highlights];
                           newH[i].value = e.target.value;
-                          setNewProject({...newProject, highlights: newH});
+                          setNewProject({ ...newProject, highlights: newH });
                         }}
-                        className="bg-black border border-primary/30 text-white px-2 py-1 rounded text-sm"
+                        className="bg-bg-base border border-primary/30 text-text-base px-2 py-1 rounded text-sm"
                         placeholder="Value"
                       />
                       <input
@@ -297,9 +297,9 @@ export default function Dashboard() {
                         onChange={(e) => {
                           const newH = [...newProject.highlights];
                           newH[i].label = e.target.value;
-                          setNewProject({...newProject, highlights: newH});
+                          setNewProject({ ...newProject, highlights: newH });
                         }}
-                        className="bg-black border border-primary/30 text-white px-2 py-1 rounded text-sm"
+                        className="bg-bg-base border border-primary/30 text-text-base px-2 py-1 rounded text-sm"
                         placeholder="Label"
                       />
                     </div>
@@ -311,8 +311,8 @@ export default function Dashboard() {
                   <input
                     type="text"
                     value={newProject.tags}
-                    onChange={(e) => setNewProject({...newProject, tags: e.target.value})}
-                    className="w-full bg-black border border-primary/30 text-white px-4 py-2 rounded"
+                    onChange={(e) => setNewProject({ ...newProject, tags: e.target.value })}
+                    className="w-full bg-bg-base border border-primary/30 text-text-base px-4 py-2 rounded"
                     placeholder="Facebook Ads, Retargeting, DPA"
                   />
                 </div>
@@ -326,7 +326,7 @@ export default function Dashboard() {
                 <button
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="w-full bg-primary text-white font-extrabold py-4 rounded hover:bg-opacity-90 transition shadow-[0_0_20px_rgba(15,53,89,0.3)]"
+                  className="w-full bg-primary text-text-base font-extrabold py-4 rounded hover:bg-opacity-90 transition shadow-[0_0_20px_rgba(15,53,89,0.3)]"
                 >
                   {isSaving ? 'Uploading...' : 'Upload Project'}
                 </button>
@@ -338,7 +338,7 @@ export default function Dashboard() {
           <div className="lg:col-span-2">
             <div className="glass p-6 rounded-lg">
               <h2 className="text-2xl font-bold mb-6 text-primary">All Projects</h2>
-              
+
               {projects.length === 0 ? (
                 <div className="text-center py-12 text-secondary">
                   No projects yet. Add your first project above!
@@ -349,7 +349,7 @@ export default function Dashboard() {
                     <div key={project.id} className="glass p-4 rounded-lg border border-primary/30">
                       <div className="flex justify-between items-start">
                         <div>
-                          <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                          <h3 className="text-xl font-bold text-text-base">{project.title}</h3>
                           <p className="text-primary text-sm">{project.platform}</p>
                         </div>
                         <div className="flex gap-2">
@@ -367,7 +367,7 @@ export default function Dashboard() {
 
                       <div className="grid grid-cols-3 gap-2 mt-4">
                         {project.highlights.map((h, i) => (
-                          <div key={i} className="bg-black p-2 rounded text-center border border-primary/10">
+                          <div key={i} className="bg-bg-base p-2 rounded text-center border border-primary/10">
                             <div className="text-xs text-secondary">{h.label}</div>
                             <div className="font-bold text-primary">{h.value}</div>
                           </div>

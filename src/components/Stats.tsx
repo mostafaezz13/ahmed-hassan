@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Wallet, TrendingUp, Rocket, Star, BarChart3 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 
 interface StatItem {
@@ -7,7 +8,9 @@ interface StatItem {
   suffix: string;
   prefix?: string;
   label: string;
+  labelAr: string;
   description: string;
+  descriptionAr: string;
   icon: string; // Keep as string but map it to Lucide component
   color: string;
 }
@@ -21,38 +24,46 @@ const iconMap: Record<string, any> = {
 
 const stats: StatItem[] = [
   {
-    value: 2,
-    suffix: 'M+',
-    prefix: '$',
-    label: 'Ad Spend Managed',
-    description: 'Total paid media budget managed across all platforms',
+    value: 50,
+    suffix: 'K+',
+    prefix: '',
+    label: 'Impressions Delivered',
+    labelAr: 'عدد مرات الظهور',
+    description: 'Total impressions generated across all advertising platforms',
+    descriptionAr: 'إجمالي عدد مرات ظهور الإعلانات عبر جميع المنصات',
     icon: 'wallet',
     color: '#0f3559',
   },
   {
-    value: 850,
+    value: 120,
     suffix: '%',
     prefix: '+',
     label: 'Average ROAS Achieved',
+    labelAr: 'متوسط العائد (ROAS)',
     description: 'Return on ad spend delivered to clients consistently',
+    descriptionAr: 'العائد الإعلاني الذي أُحققّه باستمرار',
     icon: 'trending',
     color: '#0f3559',
   },
   {
-    value: 50,
+    value: 5,
     suffix: '+',
     prefix: '',
     label: 'Campaigns Launched',
+    labelAr: 'حملات تم إطلاقها',
     description: 'High-performing campaigns across Facebook, Google & TikTok',
+    descriptionAr: 'حملات عالية الجودة على فيسبوك وجوجل وتيك توك',
     icon: 'rocket',
     color: '#0f3559',
   },
   {
-    value: 98,
+    value: 100,
     suffix: '%',
     prefix: '',
     label: 'Client Retention Rate',
+    labelAr: 'نسبة الاحتفاظ بالعملاء',
     description: 'Clients who return for continued marketing partnerships',
+    descriptionAr: 'العملاء المستمرون في الشراكة طويلة المدى',
     icon: 'star',
     color: '#0f3559',
   },
@@ -92,6 +103,7 @@ function AnimatedCounter({ value, suffix, prefix = '', color, inView }: {
 }
 
 export default function Stats() {
+  const { language } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
@@ -110,9 +122,9 @@ export default function Stats() {
   }, []);
 
   return (
-    <section id="stats" ref={sectionRef} className="relative py-20 overflow-hidden bg-[#050810]">
+    <section id="stats" ref={sectionRef} className="relative py-20 overflow-hidden bg-bg-base">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050810] via-[#080d18] to-[#050810]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-base via-bg-alt to-bg-base"></div>
       <div className="absolute inset-0 bg-dots opacity-30"></div>
 
       {/* Top divider */}
@@ -123,17 +135,19 @@ export default function Stats() {
         {/* Section header */}
         <div className="text-center mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#0f3559]/30 bg-[#0f3559]/5 text-sm text-[#0f3559] font-mono mb-4">
-            <BarChart3 className="w-4 h-4" /> Performance Metrics
+            <BarChart3 className="w-4 h-4" /> {language === 'ar' ? 'مؤشرات الأداء' : 'Performance Metrics'}
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-['Space_Grotesk'] mb-4">
-            Numbers That{' '}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-text-base font-['Space_Grotesk'] mb-4">
+            {language === 'ar' ? 'أرقام ' : 'Numbers That '}
             <span className="text-gradient" style={{ background: `linear-gradient(90deg, #0f3559, #0f3559)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Speak Louder
+              {language === 'ar' ? 'تتحدث' : 'Speak Louder'}
             </span>
-            {' '}Than Words
+            {language === 'ar' ? ' أكثر من الكلمات' : ' Than Words'}
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Every campaign is backed by data, optimized for performance, and engineered to maximize your return on investment.
+          <p className="text-text-muted text-lg max-w-2xl mx-auto">
+            {language === 'ar'
+              ? 'كل حملة مبنية على إحصائيات حقيقية، أُحسّنها باستمرار لضمان مضاعفة أرباح عملك وعائد استثمارك.'
+              : 'Every campaign is backed by data, optimized for performance, and engineered to maximize your return on investment.'}
           </p>
         </div>
 
@@ -145,18 +159,15 @@ export default function Stats() {
               className="reveal card-hover-cyan glass-card rounded-2xl p-6 border border-[#0f3559]/10 relative overflow-hidden group"
               style={{ transitionDelay: `${i * 0.1}s` }}
             >
-              {/* Glow on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
                 style={{ background: `radial-gradient(circle at center, ${stat.color}10, transparent 70%)` }}>
               </div>
 
-              {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
                 style={{ background: `linear-gradient(90deg, transparent, ${stat.color}, transparent)` }}>
               </div>
 
               <div className="relative z-10 space-y-4">
-                {/* Icon */}
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
                   style={{ backgroundColor: `${stat.color}15` }}>
                   {(() => {
@@ -165,8 +176,7 @@ export default function Stats() {
                   })()}
                 </div>
 
-                {/* Counter */}
-                <div className="text-4xl sm:text-5xl font-black font-['Space_Grotesk']">
+                <div className="text-4xl sm:text-5xl font-black font-['Space_Grotesk'] flex" dir="ltr">
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
@@ -176,10 +186,9 @@ export default function Stats() {
                   />
                 </div>
 
-                {/* Label */}
                 <div>
-                  <div className="text-white font-semibold text-base mb-1">{stat.label}</div>
-                  <div className="text-slate-400 text-sm leading-relaxed">{stat.description}</div>
+                  <div className="text-text-base font-semibold text-base mb-1">{language === 'ar' ? stat.labelAr : stat.label}</div>
+                  <div className="text-text-muted text-sm leading-relaxed">{language === 'ar' ? stat.descriptionAr : stat.description}</div>
                 </div>
               </div>
             </div>
@@ -193,16 +202,23 @@ export default function Stats() {
             <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#0f3559]/5 blur-3xl"></div>
             <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white font-['Space_Grotesk'] mb-2">
-                  Ready to see these results for your business?
+                <h3 className="text-xl sm:text-2xl font-bold text-text-base font-['Space_Grotesk'] mb-2">
+                  {language === 'ar' 
+                    ? 'هل أنت مستعد لتحقيق نتائج مشابهة لشركتك؟' 
+                    : 'Ready to see these results for your business?'}
                 </h3>
-                <p className="text-slate-400">Let's build a campaign strategy tailored to your goals.</p>
+                <p className="text-text-muted">
+                  {language === 'ar' 
+                    ? 'خلينا نبدأ بتطوير خطة إعلانات مخصصة ومتوافقة مع أهدافك.' 
+                    : "Let's build a campaign strategy tailored to your goals."}
+                </p>
               </div>
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="flex-shrink-0 px-8 py-4 rounded-xl bg-[#0f3559] text-white font-bold text-base hover:bg-[#0f3559]/90 hover:shadow-[0_0_30px_rgba(15,53,89,0.6)] transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                className="flex-shrink-0 px-8 py-4 rounded-xl bg-[#0f3559] text-text-base font-bold text-base hover:bg-[#0f3559]/90 hover:shadow-[0_0_30px_rgba(15,53,89,0.6)] transition-all duration-300 hover:scale-105 whitespace-nowrap"
               >
-                Get a Free Audit →
+                {language === 'ar' ? 'اطلب فحص ومراجعة مجانية' : 'Get a Free Audit'} 
+                <span className={language === 'ar' ? 'inline-block mr-2 rotate-180' : 'inline-block ml-2'}>→</span>
               </button>
             </div>
           </div>

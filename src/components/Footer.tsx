@@ -1,21 +1,33 @@
+import { useLanguage } from '../contexts/LanguageContext';
+
 export default function Footer() {
+  const { language, t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Contact', href: '#contact' },
+    { key: 'nav.home', href: '#home' },
+    { key: 'nav.about', href: '#about' },
+    { key: 'nav.services', href: '#services' },
+    { key: 'nav.portfolio', href: '#portfolio' },
+    { key: 'nav.contact', href: '#contact' },
   ];
 
-  const services = [
+  const servicesEn = [
     'Facebook Ads Management',
     'Google Ads Campaigns',
     'TikTok Ads',
     'Conversion Rate Optimization',
     'Funnel Strategy',
     'Analytics & Reporting',
+  ];
+
+  const servicesAr = [
+    'إدارة إعلانات فيسبوك',
+    'حملات إعلانات جوجل',
+    'إعلانات منصة تيك توك',
+    'تحسين نسبة التحويل (CRO)',
+    'استراتيجية الـ Funnels',
+    'تحليلات وإعداد التقارير',
   ];
 
   const scrollTo = (href: string) => {
@@ -34,36 +46,37 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#00f5ff] to-[#bf00ff] p-0.5">
-                <div className="w-full h-full rounded-xl bg-[#030608] flex items-center justify-center">
-                  <span className="text-[#00f5ff] font-bold text-xl font-['Space_Grotesk']">A</span>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0f3559] to-[#0f3559] p-[1px] group-hover:shadow-[0_0_20px_rgba(15,53,89,0.5)] transition-all duration-300 z-10">
+                <div className="w-full h-full rounded-xl flex items-center justify-center overflow-hidden bg-bg-base">
+                  <img src="badge1.jpeg" alt="Logo" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 </div>
               </div>
               <div>
-                <div className="text-white font-bold text-xl font-['Space_Grotesk']">
+                <div className="text-text-base font-bold text-xl font-['Space_Grotesk']">
                   Ahmed<span className="text-[#00f5ff]">.</span>Hassan
                 </div>
-                <div className="text-slate-500 text-sm">Media Buyer & Digital Marketing Specialist</div>
+                <div className="text-text-muted text-sm">Media Buyer & Digital Marketing Specialist</div>
               </div>
             </div>
 
-            <p className="text-slate-400 leading-relaxed max-w-md">
-              I help businesses turn ad spend into predictable profit through data-driven paid advertising strategies.
-              From campaign setup to full-scale media buying — I deliver measurable results, not just impressions.
+            <p className="text-text-muted leading-relaxed max-w-md">
+              {language === 'ar' 
+                ? 'أساعد الشركات والمتاجر على تحويل مصاريف الإعلانات لأرباح قابلة للتوقع من خلال أرقام حقيقية. من بداية خطة الحملة إلى إدارتها — أجلب نتائج حقيقية وليس مجرد مشاهدات وتفاعل وهمي.'
+                : 'I help businesses turn ad spend into predictable profit through data-driven paid advertising strategies. From campaign setup to full-scale media buying — I deliver measurable results, not just impressions.'}
             </p>
 
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span className="text-[#00f5ff]">📍</span> Ismailia, Egypt — Available Worldwide
+              <div className="flex items-center gap-2 text-text-muted text-sm">
+                <span className="text-[#00f5ff]">📍</span> {language === 'ar' ? 'الإسماعيلية، مصر — متاح للعمل السحابي عالمياً' : 'Ismailia, Egypt — Available Worldwide'}
               </div>
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <div className="flex items-center gap-2 text-text-muted text-sm">
                 <span className="text-[#00f5ff]">📱</span>
                 <a href="https://wa.me/201559969297" target="_blank" rel="noopener noreferrer" className="hover:text-[#00f5ff] transition-colors">
                   +20 155 996 9297
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span className="text-[#39ff14]">🟢</span> Currently accepting new clients
+              <div className="flex items-center gap-2 text-text-muted text-sm">
+                <span className="text-[#39ff14]">🟢</span> {language === 'ar' ? 'متاح لاستقبال عملاء جدد حالياً' : 'Currently accepting new clients'}
               </div>
             </div>
 
@@ -73,7 +86,7 @@ export default function Footer() {
                 href="https://www.facebook.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#1877F2] hover:border-[#1877F2]/40 hover:bg-[#1877F2]/10 transition-all duration-300"
+                className="w-10 h-10 rounded-xl border border-border-subtle flex items-center justify-center text-text-muted hover:text-[#1877F2] hover:border-[#1877F2]/40 hover:bg-[#1877F2]/10 transition-all duration-300"
                 title="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -84,7 +97,7 @@ export default function Footer() {
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#E1306C] hover:border-[#E1306C]/40 hover:bg-[#E1306C]/10 transition-all duration-300"
+                className="w-10 h-10 rounded-xl border border-border-subtle flex items-center justify-center text-text-muted hover:text-[#E1306C] hover:border-[#E1306C]/40 hover:bg-[#E1306C]/10 transition-all duration-300"
                 title="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -95,7 +108,7 @@ export default function Footer() {
                 href="https://wa.me/201559969297"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 hover:text-[#25D366] hover:border-[#25D366]/40 hover:bg-[#25D366]/10 transition-all duration-300"
+                className="w-10 h-10 rounded-xl border border-border-subtle flex items-center justify-center text-text-muted hover:text-[#25D366] hover:border-[#25D366]/40 hover:bg-[#25D366]/10 transition-all duration-300"
                 title="WhatsApp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -107,19 +120,19 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-white font-bold font-['Space_Grotesk'] text-base relative">
-              Quick Links
-              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-[#00f5ff] rounded-full"></span>
+            <h4 className="text-text-base font-bold font-['Space_Grotesk'] text-base relative">
+              {language === 'ar' ? 'روابط سريعة' : 'Quick Links'}
+              <span className={`absolute -bottom-1 ${language === 'ar' ? 'right-0' : 'left-0'} w-8 h-0.5 bg-[#00f5ff] rounded-full`}></span>
             </h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-slate-400 hover:text-[#00f5ff] text-sm transition-colors duration-200 flex items-center gap-2 group"
+                    className="text-text-muted hover:text-[#00f5ff] text-sm transition-colors duration-200 flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00f5ff]/40 group-hover:bg-[#00f5ff] transition-colors flex-shrink-0"></span>
-                    {link.label}
+                    {t(link.key)}
                   </button>
                 </li>
               ))}
@@ -128,16 +141,16 @@ export default function Footer() {
 
           {/* Services */}
           <div className="space-y-4">
-            <h4 className="text-white font-bold font-['Space_Grotesk'] text-base relative">
-              Services
-              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-[#bf00ff] rounded-full"></span>
+            <h4 className="text-text-base font-bold font-['Space_Grotesk'] text-base relative">
+              {language === 'ar' ? 'الخدمات' : 'Services'}
+              <span className={`absolute -bottom-1 ${language === 'ar' ? 'right-0' : 'left-0'} w-8 h-0.5 bg-[#bf00ff] rounded-full`}></span>
             </h4>
             <ul className="space-y-2.5">
-              {services.map((service) => (
+              {(language === 'ar' ? servicesAr : servicesEn).map((service) => (
                 <li key={service}>
                   <button
                     onClick={() => scrollTo('#services')}
-                    className="text-slate-400 hover:text-[#bf00ff] text-sm transition-colors duration-200 flex items-center gap-2 group text-left"
+                    className="text-text-muted hover:text-[#bf00ff] text-sm transition-colors duration-200 flex items-center gap-2 group text-left"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#bf00ff]/40 group-hover:bg-[#bf00ff] transition-colors flex-shrink-0"></span>
                     {service}
@@ -148,23 +161,22 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-white/5 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm text-center sm:text-left">
-            © {currentYear} Ahmed Hassan. All rights reserved.
+          <p className="text-text-muted text-sm text-center sm:text-left">
+            © {currentYear} Ahmed Hassan. {language === 'ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
           </p>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-slate-500 text-xs">
+            <div className="flex items-center gap-2 text-text-muted text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#39ff14] animate-pulse"></span>
-              Open to collaborations
+              {language === 'ar' ? 'متاح للتعاون والعمل المستمر' : 'Open to collaborations'}
             </div>
             <a
               href="https://wa.me/201559969297"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-[#00f5ff] text-xs transition-colors"
+              className="text-text-muted hover:text-[#00f5ff] text-xs transition-colors flex items-center"
             >
-              Contact Me →
+              {language === 'ar' ? 'تواصل للبدء ← ' : 'Contact Me →'}
             </a>
           </div>
         </div>

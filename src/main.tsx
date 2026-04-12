@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import Dashboard from "./components/Dashboard";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const root = createRoot(document.getElementById("root")!);
 
@@ -10,13 +11,17 @@ const root = createRoot(document.getElementById("root")!);
 if (window.location.pathname === '/dashboard' || window.location.hash === '#dashboard') {
   root.render(
     <StrictMode>
-      <Dashboard />
+      <LanguageProvider>
+        <Dashboard />
+      </LanguageProvider>
     </StrictMode>
   );
 } else {
   root.render(
     <StrictMode>
-      <App />
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </StrictMode>
   );
 }

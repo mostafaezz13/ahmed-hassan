@@ -3,7 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Ahmed Hassan | Media Buyer & Digital Marketer</title>
+    <script>
+      (function() {
+        var theme = localStorage.getItem('app_theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.remove('light');
+        }
+        var lang = localStorage.getItem('app_lang');
+        if (lang === 'ar' || lang === 'en') {
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        }
+      })();
+    </script>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/12.12.0/firebase-app-compat.js"></script>
